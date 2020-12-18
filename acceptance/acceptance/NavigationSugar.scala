@@ -19,8 +19,8 @@ package acceptance
 import org.openqa.selenium.support.ui.{ExpectedCondition, WebDriverWait}
 import org.openqa.selenium.{By, WebDriver, WebElement}
 import org.scalatest.concurrent.Eventually
-import org.scalatest.selenium.WebBrowser
-import org.scalatest.selenium.WebBrowser.{go => goo}
+import org.scalatestplus.selenium.WebBrowser
+import org.scalatestplus.selenium.WebBrowser.{go => goo}
 import org.scalatest.time.{Millis, Seconds, Span}
 import org.scalatest.{Assertions, Matchers}
 
@@ -33,8 +33,8 @@ trait NavigationSugar extends WebBrowser with Eventually with Assertions with Ma
     on(page)
   }
 
-  def go(page: WebLink)(implicit webDriver: WebDriver) = {
-    goo to page
+  def go(page: WebPage)(implicit webDriver: WebDriver) = {
+    goo to page.url
   }
 
   def on(page: WebPage)(implicit webDriver: WebDriver) = {

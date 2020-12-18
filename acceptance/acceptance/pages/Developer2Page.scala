@@ -30,8 +30,6 @@ object Developer2Page extends WebPage {
 
   private def searchBox = textField("emailFilter")
 
-  private def submitButton = singleSel(id("submit"))
-
   private def filterBySubscription = singleSel(id("apiVersionFilter"))
 
   private def filterByEnvironment = singleSel(id("environmentFilter"))
@@ -51,7 +49,7 @@ object Developer2Page extends WebPage {
 
   def searchByPartialEmail(partialEmail: String) = {
     writeInSearchBox(partialEmail)
-    click on submitButton
+    submit()
   }
 
   def selectBySubscription(api: APIFilterList) = {
@@ -65,12 +63,9 @@ object Developer2Page extends WebPage {
   def selectByDeveloperStatus(status: String) = {
     filterByDeveloperStatus.value = status
   }
-
   object APIFilter  {
-
     sealed abstract class APIFilterList(val name: String) {}
 
     case object EMPLOYERSPAYE extends APIFilterList("employers-paye__1.0")
-
   }
 }

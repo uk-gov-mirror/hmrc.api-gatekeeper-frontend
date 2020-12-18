@@ -30,6 +30,7 @@ import play.api.http.Status._
 import play.api.libs.json.Json
 
 import scala.collection.immutable.List
+import acceptance.pages.Developer2Page
 
 class ApiGatekeeperDeveloperSpec extends BaseSpec with SignInSugar with Matchers with CustomMatchers with MockDataSugar with GivenWhenThen with Assertions with ApiDefinitionTestData {
 
@@ -53,10 +54,8 @@ class ApiGatekeeperDeveloperSpec extends BaseSpec with SignInSugar with Matchers
       When("I select to navigate to the Developers page")
       ApplicationsPage.selectDevelopers()
 
-      DeveloperPage.selectOldDevelopersPage()
-
       Then("I am successfully navigated to the Developers page where I can view all developer list details by default")
-      on(DeveloperPage)
+      on(Developer2Page)
     }
 
     scenario("Ensure a user can view ALL developers", Tag("NonSandboxTest")) {
@@ -72,8 +71,8 @@ class ApiGatekeeperDeveloperSpec extends BaseSpec with SignInSugar with Matchers
 
       When("I select to navigate to the Developers page")
       ApplicationsPage.selectDevelopers()
-      DeveloperPage.selectOldDevelopersPage()
-      on(DeveloperPage)
+      // DeveloperPage.selectOldDevelopersPage()
+      on(Developer2Page)
 
       Then("all developers are successfully displayed and sorted correctly")
       val developers: Seq[(String, String, String,String)] = List((dev4FirstName,dev4LastName,developer4,statusVerified),

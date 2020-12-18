@@ -33,10 +33,6 @@ params: Map[String, String])(implicit loggedInUser: LoggedInUser, messagesProvid
         <h1>Developers</h1>
     </header>
 
-    <p>
-        <a href="@{routes.DevelopersController.developersPage(None, None, None)}">Old developer search</a>
-    </p>
-
     @defining(Seq("emailFilter", "apiVersionFilter", "developerStatusFilter", "environmentFilter").map(params.get(_))) { case emailFilter :: apiVersionFilter :: developerStatusFilter :: environmentFilter :: _ =>
 
     <form name="developers-filters"
